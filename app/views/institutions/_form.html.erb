@@ -1,0 +1,89 @@
+<%= simple_form_for(@institution) do |f| %>
+  <% if @institution.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@institution.errors.count, "error") %> prohibited this institution from being saved:</h2>
+
+      <ul>
+      <% @institution.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_area :address %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <label>Select Facilities </label></br>
+    <%= f.collection_check_boxes :facility_ids, Facility.all, :id, :name do |b| %>
+    <%= b.check_box %>
+    <%= b.label %>
+    <% end %>
+  </div>
+  <h3> Add Contact </h3>
+  <div>
+    <%= f.simple_fields_for :contacts do |contact| %>
+    <%= render 'contact_fields', f: contact %>
+    <% end %>
+    <%= link_to_add_association 'Add Contact', f, :contacts %>
+  </div>
+  <h3>Add Highlights</h3>
+  <div>
+    <%= f.simple_fields_for :highlights do |highlight| %>
+    <%= render 'highlight_fields', f: highlight %>
+    <% end %>
+    <%= link_to_add_association 'Add Highlight', f, :highlights %>
+  </div>
+  <h3>Add Acheivement</h3>
+  <div>
+    <%= f.simple_fields_for :acheivements do |acheivement| %>
+    <%= render 'acheivement_fields', f: acheivement %>
+    <% end %>
+    <%= link_to_add_association 'Add acheivement', f, :acheivements %>
+  </div>
+  <h3>Add Events</h3>
+  <div>
+    <%= f.simple_fields_for :events do |event| %>
+    <%= render 'event_fields', f: event %>
+    <% end %>
+    <%= link_to_add_association 'Add event', f, :events %>
+  </div>
+  <h3>Add Results</h3>
+  <div>
+    <%= f.simple_fields_for :results do |result| %>
+    <%= render 'result_fields', f: result %>
+    <% end %>
+    <%= link_to_add_association 'Add Results', f, :results%>
+  </div>
+
+  <div class="field">
+    <%= f.label :state_id %><br>
+    <%= f.collection_select :state_id, State.all, :id, :name, {prompt: "Select state"} %>
+  </div>
+  <div class="field">
+    <%= f.label :city_id %><br>
+    <%= f.collection_select :city_id, City.all, :id, :name, {prompt: "Select City"} %>
+  </div>
+  <div class="field">
+    <%= f.label :location_id %><br>
+    <%= f.collection_select :location_id, Location.all, :id, :name, {prompt: "Select Location"} %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

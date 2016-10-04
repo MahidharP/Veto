@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  institution_id: 
+  students: 1
+  scored: 1.5
+
+two:
+  institution_id: 
+  students: 1
+  scored: 1.5

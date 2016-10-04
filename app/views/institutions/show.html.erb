@@ -1,0 +1,78 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @institution.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @institution.description %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @institution.address %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @institution.email %>
+</p>
+<p>
+  <strong>Facilities</strong>
+  <%= @institution.facilities.pluck(:name).join(", ") %>
+</p>
+<p>
+  <strong>Phone Numbers: </strong>
+  <% @institution.contacts.each do |contact| %>
+  <%= contact.phone_number %>
+  <% end %>
+</p>
+  <p>
+    <strong>acheivements:  </strong>
+    <% @institution.acheivements.each do |acheivement| %>
+    <%= acheivement.name %></br>
+    <%=  acheivement.details %>
+    <% end %>
+  </p>
+  <p>
+    <strong>Results:  </strong>
+    <% @institution.results.each do |result| %>
+    <em><%= result.students %> students</em> has Scored <%= result.scored %>
+
+    <% end %>
+  </p>
+
+  <p>
+    <strong>Events:  </strong>
+    <% @institution.events.each do |event| %>
+    <em>Happened On <em><%= event.event_date %>
+    <%= event.name %></br>
+    <%= event.details %>
+    <% end %>
+  </p>
+
+<p>
+  <strong>Highlights: </strong>
+  <% @institution.highlights.each do |highlight| %>
+  <%= highlight.name %>
+  <% end %>
+</p>
+<p>
+  <strong>State:</strong>
+  <%= @institution.state.try(:name) %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @institution.city.try(:name) %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @institution.location.try(:name) %>
+</p>
+
+<%= link_to 'Edit', edit_institution_path(@institution) %> |
+<%= link_to 'Back', institutions_path %>
