@@ -28,6 +28,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'cocoon', '~> 1.2', '>=1.2.9'
 gem 'simple_form', '~> 3.0.2'
 
+gem 'cancan'
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

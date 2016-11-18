@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<%= current_user.email %>
 <h1>Listing Institutions</h1>
 
 <table>
@@ -26,14 +26,15 @@
         <td><%= institution.state.try(:name) %></td>
         <td><%= institution.city.try(:name) %></td>
         <td><%= institution.location.try(:name) %></td>
+
         <td><%= link_to 'Show', institution %></td>
         <td><%= link_to 'Edit', edit_institution_path(institution) %></td>
         <td><%= link_to 'Destroy', institution, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
 <%= link_to 'New Institution', new_institution_path %>

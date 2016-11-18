@@ -1,0 +1,97 @@
+<%= form_for(@form) do |f| %>
+  <% if @form.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@form.errors.count, "error") %> prohibited this form from being saved:</h2>
+
+      <ul>
+      <% @form.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<%= f.hidden_field :user_id, value: @user_id %>
+
+  <div class="field">
+    <%= f.label :student_name %><br>
+    <%= f.text_field :student_name %>
+  </div>
+  <div class="field">
+    <%= f.label :dob %><br>
+    <%= f.date_select :dob %>
+  </div>
+  <div class="field">
+    <%= f.label :class %><br>
+    <%= f.text_field :class %>
+  </div>
+  <div class="form-group">
+        <div class="field">
+          <%= f.label :gender %><br>
+          <%= f.radio_button :gender, "male" %> Male
+          <%= f.radio_button :gender, "female" %> Female
+          <%= f.radio_button :gender, "other" %> Other
+        </div>
+  </div>
+  <div class="field">
+    <%= f.label :nationality %><br>
+    <%= f.text_field :nationality %>
+  </div>
+  <div class="field">
+    <%= f.label :religion %><br>
+    <%= f.collection_select :religion_id, Religion.all, :id, :name, prompt: "Select Religion" %><br/>
+  </div>
+  <div class="field">
+    <%= f.label :father_name %><br>
+    <%= f.text_field :father_name %>
+  </div>
+  <h3>Father Qualification</h3>
+  <div>
+    <%= f.simple_fields_for :qualifications do |qualification| %>
+    <%= render 'qualification_fields', f: qualification %>
+    <% end %>
+    <%= link_to_add_association 'Add Qualification', f, :qualifications %>
+  </div>
+  <div class="field">
+    <%= f.label :father_occupation %><br>
+    <%= f.text_field :father_occupation %>
+  </div>
+  <div class="field">
+    <%= f.label :father_designation %><br>
+    <%= f.text_field :father_designation %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :income %><br>
+    <%= f.text_field :income %>
+  </div>
+  <div class="field">
+    <%= f.label :phone_number %><br>
+    <%= f.text_field :phone_number %>
+  </div>
+  <div class="field">
+    <%= f.label :mother_name %><br>
+    <%= f.text_field :mother_name %>
+  </div>
+  <div class="field">
+    <%= f.label :mother_occupation %><br>
+    <%= f.text_field :mother_occupation %>
+  </div>
+  <h3>Mother Qualification</h3>
+  <div>
+    <%= f.simple_fields_for :qualifications do |qualification| %>
+    <%= render 'qualification_fields', f: qualification %>
+    <% end %>
+    <%= link_to_add_association 'Add Qualification', f, :qualifications %>
+  </div>
+  <div class="field">
+    <%= f.label :telephone %><br>
+    <%= f.text_field :telephone %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

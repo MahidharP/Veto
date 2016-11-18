@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161004085034) do
+ActiveRecord::Schema.define(version: 20161007083513) do
 
   create_table "abilities", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -73,6 +73,27 @@ ActiveRecord::Schema.define(version: 20161004085034) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "forms", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "student_name"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.date     "dob"
+    t.string   "class"
+    t.string   "nationality"
+    t.string   "gender"
+    t.string   "religion"
+    t.string   "father_name"
+    t.string   "father_occupation"
+    t.string   "father_designation"
+    t.string   "email"
+    t.float    "income"
+    t.string   "phone_number"
+    t.string   "mother_name"
+    t.string   "mother_occupation"
+    t.string   "telephone"
+  end
+
   create_table "highlights", force: :cascade do |t|
     t.integer  "institution_id"
     t.string   "name"
@@ -116,6 +137,141 @@ ActiveRecord::Schema.define(version: 20161004085034) do
   end
 
   add_index "locations", ["city_id"], name: "index_locations_on_city_id"
+
+  create_table "myaccounts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "student_name"
+    t.date     "dob"
+    t.string   "class"
+    t.string   "gender"
+    t.string   "nationality"
+    t.string   "religion"
+    t.string   "father_name"
+    t.string   "father_occupation"
+    t.string   "father_designation"
+    t.string   "email"
+    t.float    "income"
+    t.string   "phone_number"
+    t.string   "mother_name"
+    t.string   "mother_occupation"
+    t.string   "telephone"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "myaccounts", ["user_id"], name: "index_myaccounts_on_user_id"
+
+  create_table "mydata", force: :cascade do |t|
+    t.string   "student_name"
+    t.integer  "user"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "myforms", force: :cascade do |t|
+    t.integer  "user"
+    t.string   "student_name"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "myforms", ["user"], name: "index_myforms_on_user"
+
+  create_table "myprofiles", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "student_name"
+    t.date     "dob"
+    t.string   "class"
+    t.string   "gender"
+    t.string   "nationality"
+    t.string   "religion"
+    t.string   "father_name"
+    t.string   "father_occupation"
+    t.string   "father_designation"
+    t.string   "email"
+    t.float    "income"
+    t.string   "phone_number"
+    t.string   "mother_name"
+    t.string   "mother_occupation"
+    t.string   "telephone"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "myprofiles", ["user_id"], name: "index_myprofiles_on_user_id"
+
+  create_table "outlets", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "outlets", ["user_id"], name: "index_outlets_on_user_id"
+
+  create_table "outlines", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "student_name"
+    t.date     "dob"
+    t.string   "class"
+    t.string   "gender"
+    t.string   "nationality"
+    t.string   "religion"
+    t.string   "father_name"
+    t.string   "father_occupation"
+    t.string   "father_designation"
+    t.string   "email"
+    t.float    "income"
+    t.string   "phone_number"
+    t.string   "mother_name"
+    t.string   "mother_occupation"
+    t.string   "telephone"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "outlines", ["user_id"], name: "index_outlines_on_user_id"
+
+  create_table "profiles", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "student"
+    t.date     "dob"
+    t.string   "class"
+    t.string   "gender"
+    t.string   "nationality"
+    t.string   "religion"
+    t.string   "father_name"
+    t.string   "father_occupation"
+    t.string   "father_designation"
+    t.string   "email"
+    t.float    "income"
+    t.string   "phone_number"
+    t.string   "mother_name"
+    t.string   "mother_occupation"
+    t.string   "telephone"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
+
+  create_table "qualifications", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "profile_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "qualifications", ["profile_id"], name: "index_qualifications_on_profile_id"
+
+  create_table "religions", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "profile_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "religions", ["profile_id"], name: "index_religions_on_profile_id"
 
   create_table "results", force: :cascade do |t|
     t.integer  "institution_id"

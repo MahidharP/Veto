@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  resources :forms
+  resources :myforms
+  resources :mydata
+  resources :outlets
+  resources :profiles
+
+  resources :religions
   resources :institutions
   resources :states
   resources :cities

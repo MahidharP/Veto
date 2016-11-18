@@ -1,0 +1,2 @@
+json.extract! profile, :id, :user_id, :student, :dob, :class, :gender, :nationality, :religion, :father_name, :father_occupation, :father_designation, :email, :income, :phone_number, :mother_name, :mother_occupation, :telephone, :created_at, :updated_at
+json.url profile_url(profile, format: :json)

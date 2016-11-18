@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Mydata</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Student name</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @mydata.each do |mydatum| %>
+      <tr>
+        <td><%= mydatum.student_name %></td>
+        <td><%= mydatum.user %></td>
+        <td><%= link_to 'Show', mydatum %></td>
+        <td><%= link_to 'Edit', edit_mydatum_path(mydatum) %></td>
+        <td><%= link_to 'Destroy', mydatum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Mydatum', new_mydatum_path %>

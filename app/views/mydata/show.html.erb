@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Student name:</strong>
+  <%= @mydatum.student_name %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @mydatum.user %>
+</p>
+
+<%= link_to 'Edit', edit_mydatum_path(@mydatum) %> |
+<%= link_to 'Back', mydata_path %>

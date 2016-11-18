@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Myforms</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Student name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @myforms.each do |myform| %>
+      <tr>
+        <td><%= myform.user %></td>
+        <td><%= myform.student_name %></td>
+        <td><%= link_to 'Show', myform %></td>
+        <td><%= link_to 'Edit', edit_myform_path(myform) %></td>
+        <td><%= link_to 'Destroy', myform, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Myform', new_myform_path %>

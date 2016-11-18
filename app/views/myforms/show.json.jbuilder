@@ -1,0 +1,1 @@
+json.partial! "myforms/myform", myform: @myform
